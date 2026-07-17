@@ -24,25 +24,29 @@
     { label: "Privacy Policy", href: "policies/privacy-policy.html" }
   ];
 
+  var MENU_ICON =
+    '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">' +
+      '<path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>' +
+    '</svg>';
+
   function buildHeader(activeId, basePath) {
     var links = NAV_ITEMS.map(function (item) {
       var isActive = item.id === activeId;
-      return (
+      var row =
         '<li><a class="nav-link' + (isActive ? " is-active" : "") + '" ' +
         (isActive ? 'aria-current="page" ' : "") +
-        'href="' + basePath + item.href + '">' + item.label + "</a></li>"
-      );
-    }).join("");
+        'href="' + basePath + item.href + '">' + item.label + "</a></li>";
 
-    var subLinks = "";
-    if (activeId === "policies") {
-      subLinks =
-        '<ul class="sub-nav">' +
-        POLICY_LINKS.map(function (p) {
-          return '<li><a href="' + basePath + p.href + '">' + p.label + "</a></li>";
-        }).join("") +
-        "</ul>";
-    }
+      if (item.id === "policies") {
+        row +=
+          '<li><ul class="sub-nav">' +
+          POLICY_LINKS.map(function (p) {
+            return '<li><a href="' + basePath + p.href + '">' + p.label + "</a></li>";
+          }).join("") +
+          "</ul></li>";
+      }
+      return row;
+    }).join("");
 
     return (
       '<header class="site-header">' +
@@ -52,19 +56,23 @@
               'alt="Your organisation logo - replace assets/logo-placeholder.svg with your own logo file">' +
             '<span class="brand__name">[Your Organisation Name]</span>' +
           '</a>' +
+          '<button type="button" class="nav-icon-btn" id="nav-toggle-btn" ' +
+            'aria-haspopup="true" aria-expanded="false" aria-controls="nav-panel">' +
+            MENU_ICON +
+            '<span class="nav-icon-btn__label">Menu</span>' +
+          '</button>' +
+        '</div>' +
+        '<div class="nav-backdrop" id="nav-backdrop"></div>' +
+        '<nav class="nav-panel" id="nav-panel" aria-label="Main">' +
+          '<ul class="site-nav__list">' + links + '</ul>' +
+          '<hr class="nav-panel__divider">' +
           '<div class="text-size" role="group" aria-label="Text size">' +
             '<span class="text-size__label">Text size</span>' +
             '<button type="button" data-scale="0.9" aria-label="Smaller text">A-</button>' +
             '<button type="button" data-scale="1" aria-label="Default text size">A</button>' +
             '<button type="button" data-scale="1.25" aria-label="Larger text">A+</button>' +
           '</div>' +
-          '<input type="checkbox" id="nav-toggle" class="nav-toggle">' +
-          '<label for="nav-toggle" class="nav-toggle-label">Menu</label>' +
-        '</div>' +
-        '<nav aria-label="Main">' +
-          '<ul class="site-nav__list">' + links + '</ul>' +
         '</nav>' +
-        subLinks +
       '</header>'
     );
   }
@@ -102,12 +110,47 @@
     );
   }
 
-  function initTextSize() {
-    var buttons = document.querySelectorAll(".text-size button");
+  function initTextSize(root) {
+    var buttons = root.querySelectorAll(".text-size button");
     buttons.forEach(function (btn) {
       btn.addEventListener("click", function () {
         document.documentElement.style.setProperty("--text-scale", btn.getAttribute("data-scale"));
       });
+    });
+  }
+
+  // Menu icon opens a small dropdown panel, so people never have to
+  // scroll back up a long page to find navigation - it is always
+  // reachable from the same spot, top right, on every page.
+  function initMenu() {
+    var toggleBtn = document.getElementById("nav-toggle-btn");
+    var panel = document.getElementById("nav-panel");
+    var backdrop = document.getElementById("nav-backdrop");
+    if (!toggleBtn || !panel || !backdrop) { return; }
+
+    function openMenu() {
+      panel.classList.add("is-open");
+      backdrop.classList.add("is-open");
+      toggleBtn.setAttribute("aria-expanded", "true");
+    }
+    function closeMenu() {
+      panel.classList.remove("is-open");
+      backdrop.classList.remove("is-open");
+      toggleBtn.setAttribute("aria-expanded", "false");
+    }
+    function toggleMenu() {
+      if (panel.classList.contains("is-open")) { closeMenu(); } else { openMenu(); }
+    }
+
+    toggleBtn.addEventListener("click", toggleMenu);
+    backdrop.addEventListener("click", closeMenu);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") { closeMenu(); }
+    });
+    // Closing after choosing a link keeps the panel out of the way
+    // of the page the person just navigated to.
+    panel.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", closeMenu);
     });
   }
 
@@ -122,7 +165,8 @@
     headerHost.outerHTML = buildHeader(activeId, basePath);
     footerHost.outerHTML = buildFooter(basePath);
 
-    initTextSize();
+    initTextSize(document.getElementById("nav-panel"));
+    initMenu();
   }
 
   document.addEventListener("DOMContentLoaded", render);
