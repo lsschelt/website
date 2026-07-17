@@ -20,8 +20,9 @@
   ];
 
   var POLICY_LINKS = [
-    { label: "Terms & Conditions", href: "policies/terms-conditions.html" },
-    { label: "Privacy Policy", href: "policies/privacy-policy.html" }
+    { label: "Privacy Policy", href: "policies/privacy-policy.html" },
+    { label: "Fees & Cancellation Policy", href: "policies/fees-cancellation-policy.html" },
+    { label: "Safeguarding & Child Protection Policy", href: "policies/safeguarding-child-protection-policy.html" }
   ];
 
   var MENU_ICON =
@@ -52,9 +53,8 @@
       '<header class="site-header">' +
         '<div class="site-header__bar">' +
           '<a class="brand" href="' + basePath + 'index.html">' +
-            '<img class="brand__logo" src="' + basePath + 'assets/logo-placeholder.svg" ' +
-              'alt="Your organisation logo - replace assets/logo-placeholder.svg with your own logo file">' +
-            '<span class="brand__name">[Your Organisation Name]</span>' +
+            '<img class="brand__logo" src="' + basePath + 'assets/logo-small.png" ' +
+              'alt="Learning Support &amp; Assessment - Ruth Paterson">' +
           '</a>' +
           '<button type="button" class="nav-icon-btn" id="nav-toggle-btn" ' +
             'aria-haspopup="true" aria-expanded="false" aria-controls="nav-panel">' +
@@ -82,10 +82,8 @@
       '<footer class="site-footer">' +
         '<div class="site-footer__grid">' +
           '<div>' +
-            '<h2>[Your Organisation Name]</h2>' +
-            '<p>[Town], [County] [Postcode]<br>' +
-              '<a href="tel:+440000000000">[Phone number]</a><br>' +
-              '<a href="mailto:hello@example.co.uk">hello@example.co.uk</a></p>' +
+            '<h2>Learning Support &amp; Assessment</h2>' +
+            '<p><a href="mailto:info@learningsupportservices.co.uk">info@learningsupportservices.co.uk</a></p>' +
           '</div>' +
           '<div>' +
             '<h2>Quick links</h2>' +
@@ -104,8 +102,8 @@
             '</ul>' +
           '</div>' +
         '</div>' +
-        '<p class="site-footer__bottom">Prototype site - placeholder content. &copy; ' +
-          new Date().getFullYear() + ' [Your Organisation Name]</p>' +
+        '<p class="site-footer__bottom">&copy; ' +
+          new Date().getFullYear() + ' Learning Support &amp; Assessment - Ruth Paterson</p>' +
       '</footer>'
     );
   }

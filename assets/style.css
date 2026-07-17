@@ -25,7 +25,7 @@
   --text-scale: 1; /* changed by the A/A+/A++ control */
   --shadow-soft: 0 10px 30px rgba(39, 76, 78, 0.12);
   --shadow-card: 0 2px 10px rgba(39, 76, 78, 0.06);
-  --header-height: 68px;
+  --header-height: 76px;
 }
 
 * { box-sizing: border-box; }
@@ -217,14 +217,8 @@ button:focus-visible {
   text-decoration: none;
 }
 .brand__logo {
-  height: 48px;
+  height: 56px;
   width: auto;
-}
-.brand__name {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.2rem;
-  color: var(--color-primary-dark);
 }
 
 /* Menu icon button, top right, on every page and every screen size */
