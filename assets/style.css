@@ -148,6 +148,46 @@ button:focus-visible {
   margin-top: 1.5rem;
 }
 
+.card--expand {
+  padding: 0;
+  overflow: hidden;
+}
+.card--expand > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem;
+  cursor: pointer;
+  list-style: none;
+}
+.card--expand > summary::-webkit-details-marker { display: none; }
+.card--expand > summary h3 { margin: 0; }
+.card--expand > summary::after {
+  content: "+";
+  flex-shrink: 0;
+  width: 1.6rem;
+  height: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--color-bg-band);
+  color: var(--color-primary-dark);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+.card--expand[open] > summary::after { content: "\2212"; }
+.card--expand > summary:hover::after,
+.card--expand > summary:focus-visible::after {
+  background: var(--color-primary);
+  color: #fff;
+}
+.card--expand > p {
+  margin: 0;
+  padding: 0 1.5rem 1.5rem;
+}
+
 .credential-badge {
   margin-top: 1rem;
   max-width: 260px;
