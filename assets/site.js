@@ -83,7 +83,7 @@
         '<div class="site-footer__grid">' +
           '<div>' +
             '<h2>Empowering Learners</h2>' +
-            '<p><a href="mailto:info@learningsupportservices.co.uk">info@learningsupportservices.co.uk</a></p>' +
+            '<p><a href="mailto:info@empoweringlearning.co.uk">info@empoweringlearning.co.uk</a></p>' +
           '</div>' +
           '<div>' +
             '<h2>Quick links</h2>' +

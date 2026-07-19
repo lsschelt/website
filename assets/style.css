@@ -348,7 +348,7 @@ button:focus-visible {
   color: #F3EFE4;
   margin-top: 2rem;
 }
-.site-footer a { color: #FFE9C7; }
+.site-footer a { color: #FFE9C7; overflow-wrap: anywhere; }
 .site-footer__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
