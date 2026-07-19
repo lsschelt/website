@@ -148,6 +148,11 @@ button:focus-visible {
   margin-top: 1.5rem;
 }
 
+.credential-badge {
+  margin-top: 1rem;
+  max-width: 260px;
+}
+
 .placeholder-note {
   font-size: 0.95rem;
   color: var(--color-ink-soft);

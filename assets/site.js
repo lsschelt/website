@@ -54,7 +54,7 @@
         '<div class="site-header__bar">' +
           '<a class="brand" href="' + basePath + 'index.html">' +
             '<img class="brand__logo" src="' + basePath + 'assets/logo-small.png" ' +
-              'alt="Learning Support &amp; Assessment - Ruth Paterson">' +
+              'alt="Empowering Learners - Ruth Paterson">' +
           '</a>' +
           '<button type="button" class="nav-icon-btn" id="nav-toggle-btn" ' +
             'aria-haspopup="true" aria-expanded="false" aria-controls="nav-panel">' +
@@ -82,7 +82,7 @@
       '<footer class="site-footer">' +
         '<div class="site-footer__grid">' +
           '<div>' +
-            '<h2>Learning Support &amp; Assessment</h2>' +
+            '<h2>Empowering Learners</h2>' +
             '<p><a href="mailto:info@learningsupportservices.co.uk">info@learningsupportservices.co.uk</a></p>' +
           '</div>' +
           '<div>' +
@@ -103,7 +103,7 @@
           '</div>' +
         '</div>' +
         '<p class="site-footer__bottom">&copy; ' +
-          new Date().getFullYear() + ' Learning Support &amp; Assessment - Ruth Paterson</p>' +
+          new Date().getFullYear() + ' Empowering Learners - Ruth Paterson</p>' +
       '</footer>'
     );
   }
