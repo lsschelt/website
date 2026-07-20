@@ -18,12 +18,6 @@
     { id: "contact", label: "Contact", href: "contact.html" }
   ];
 
-  var POLICY_LINKS = [
-    { label: "Privacy Policy", href: "policies/privacy-policy.html" },
-    { label: "Fees & Cancellation Policy", href: "policies/fees-cancellation-policy.html" },
-    { label: "Safeguarding & Child Protection Policy", href: "policies/safeguarding-child-protection-policy.html" }
-  ];
-
   var MENU_ICON =
     '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">' +
       '<path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>' +
@@ -80,14 +74,6 @@
             '<ul>' +
               NAV_ITEMS.map(function (item) {
                 return '<li><a href="' + basePath + item.href + '">' + item.label + "</a></li>";
-              }).join("") +
-            '</ul>' +
-          '</div>' +
-          '<div>' +
-            '<h2>Policies</h2>' +
-            '<ul>' +
-              POLICY_LINKS.map(function (p) {
-                return '<li><a href="' + basePath + p.href + '">' + p.label + "</a></li>";
               }).join("") +
             '</ul>' +
           '</div>' +
