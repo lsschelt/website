@@ -13,7 +13,6 @@
   // page updates automatically.
   var NAV_ITEMS = [
     { id: "home", label: "Home", href: "index.html" },
-    { id: "services", label: "Additional Services", href: "services.html" },
     { id: "testimonials", label: "Testimonials", href: "testimonials.html" },
     { id: "policies", label: "Policies", href: "policies.html" },
     { id: "contact", label: "Contact", href: "contact.html" }
@@ -33,20 +32,11 @@
   function buildHeader(activeId, basePath) {
     var links = NAV_ITEMS.map(function (item) {
       var isActive = item.id === activeId;
-      var row =
+      return (
         '<li><a class="nav-link' + (isActive ? " is-active" : "") + '" ' +
         (isActive ? 'aria-current="page" ' : "") +
-        'href="' + basePath + item.href + '">' + item.label + "</a></li>";
-
-      if (item.id === "policies") {
-        row +=
-          '<li><ul class="sub-nav">' +
-          POLICY_LINKS.map(function (p) {
-            return '<li><a href="' + basePath + p.href + '">' + p.label + "</a></li>";
-          }).join("") +
-          "</ul></li>";
-      }
-      return row;
+        'href="' + basePath + item.href + '">' + item.label + "</a></li>"
+      );
     }).join("");
 
     return (
