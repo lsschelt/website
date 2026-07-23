@@ -13,6 +13,7 @@
   // page updates automatically.
   var NAV_ITEMS = [
     { id: "home", label: "Home", href: "index.html" },
+    { id: "about", label: "About Us", href: "about.html" },
     { id: "testimonials", label: "Testimonials", href: "testimonials.html" },
     { id: "faq", label: "FAQs", href: "faq.html" },
     { id: "policies", label: "Policies", href: "policies.html" },
