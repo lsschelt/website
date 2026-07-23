@@ -14,6 +14,7 @@
   var NAV_ITEMS = [
     { id: "home", label: "Home", href: "index.html" },
     { id: "testimonials", label: "Testimonials", href: "testimonials.html" },
+    { id: "faq", label: "FAQs", href: "faq.html" },
     { id: "policies", label: "Policies", href: "policies.html" },
     { id: "contact", label: "Contact", href: "contact.html" }
   ];

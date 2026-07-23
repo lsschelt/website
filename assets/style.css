@@ -148,6 +148,12 @@ button:focus-visible {
   margin-top: 1.5rem;
 }
 
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .card--expand {
   padding: 0;
   overflow: hidden;
