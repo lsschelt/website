@@ -40,7 +40,7 @@
         '<div class="site-header__bar">' +
           '<a class="brand" href="' + basePath + 'index.html">' +
             '<img class="brand__logo" src="' + basePath + 'assets/logo-small.png" ' +
-              'alt="Empowering Learners - Ruth Paterson">' +
+              'alt="Empowering Learners - Ruth Paterson" width="320" height="320">' +
           '</a>' +
           '<button type="button" class="nav-icon-btn" id="nav-toggle-btn" ' +
             'aria-haspopup="true" aria-expanded="false" aria-controls="nav-panel">' +
