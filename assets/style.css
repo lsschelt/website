@@ -375,6 +375,13 @@ button:focus-visible {
 .hero {
   padding: 2.75rem 0 2.25rem;
 }
+.hero-logo {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
 .hero__lede {
   font-size: 1.25rem;
   color: var(--color-ink-soft);
