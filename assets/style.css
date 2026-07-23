@@ -188,9 +188,15 @@ button:focus-visible {
   padding: 0 1.5rem 1.5rem;
 }
 
-.credential-badge {
+.credential-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
   margin-top: 1rem;
-  max-width: 260px;
+}
+.credential-badge {
+  max-width: 200px;
 }
 
 .placeholder-note {
