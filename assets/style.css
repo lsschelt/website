@@ -216,7 +216,9 @@ button:focus-visible {
   margin-top: 1rem;
 }
 .credential-badge {
+  width: auto;
   max-width: 200px;
+  height: auto;
 }
 
 .placeholder-note {
