@@ -418,7 +418,8 @@ button:focus-visible {
 
 /* ---------- Hero ---------- */
 .hero {
-  padding: 2.75rem 0 2.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.25rem;
 }
 .hero-logo {
   display: block;
