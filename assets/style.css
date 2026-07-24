@@ -41,6 +41,21 @@
   --color-heading: #8FD3D6;
 }
 
+/* Gentle colour overlays - some readers with visual stress find a
+   pale blue or pink background more comfortable than white/cream. */
+:root[data-theme="blue"] {
+  --color-bg: #E9F1F8;
+  --color-bg-band: #DCE7F1;
+  --color-border: #C4D6E4;
+  --color-surface: #F4F9FC;
+}
+:root[data-theme="pink"] {
+  --color-bg: #FBEEF2;
+  --color-bg-band: #F6E1E7;
+  --color-border: #E9C7D1;
+  --color-surface: #FDF6F8;
+}
+
 * { box-sizing: border-box; }
 
 html {
@@ -112,7 +127,7 @@ button:focus-visible {
 .wrap {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1.75rem;
 }
 
 .band { padding: 2.75rem 0; }
@@ -160,6 +175,10 @@ button:focus-visible {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.25rem;
   margin-top: 1.5rem;
+}
+
+.testimonial-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .stack {
@@ -358,20 +377,21 @@ button:focus-visible {
 .text-size,
 .theme-toggle {
   display: flex;
-  gap: 0.4rem;
+  flex-wrap: wrap;
+  gap: 0.3rem;
   align-items: center;
-  padding: 0.4em 0.6em;
+  padding: 0.3em 0.6em;
 }
 .text-size button,
 .theme-toggle button {
   font-family: var(--font-body);
   background: var(--color-bg-band);
   border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 0.35em 0.7em;
+  border-radius: 7px;
+  padding: 0.2em 0.5em;
   cursor: pointer;
-  font-size: 0.95rem;
-  min-height: 40px;
+  font-size: 0.8rem;
+  min-height: 32px;
 }
 .text-size button:hover,
 .theme-toggle button:hover { background: var(--color-accent); color: #fff; }

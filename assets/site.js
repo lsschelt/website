@@ -63,6 +63,8 @@
             '<span class="theme-toggle__label">Theme</span>' +
             '<button type="button" data-theme-choice="light" aria-label="Light theme">Light</button>' +
             '<button type="button" data-theme-choice="dark" aria-label="Dark theme">Dark</button>' +
+            '<button type="button" data-theme-choice="blue" aria-label="Blue tint theme">Blue</button>' +
+            '<button type="button" data-theme-choice="pink" aria-label="Pink tint theme">Pink</button>' +
           '</div>' +
         '</nav>' +
       '</header>'
@@ -93,10 +95,11 @@
   }
 
   var THEME_KEY = "theme";
+  var THEMES = ["light", "dark", "blue", "pink"];
 
   function getPreferredTheme() {
     var stored = localStorage.getItem(THEME_KEY);
-    if (stored === "light" || stored === "dark") { return stored; }
+    if (THEMES.indexOf(stored) !== -1) { return stored; }
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }
 

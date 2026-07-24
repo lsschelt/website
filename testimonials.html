@@ -5,7 +5,7 @@
 <script>
 (function () {
   var t = localStorage.getItem('theme');
-  if (t !== 'light' && t !== 'dark') {
+  if (['light', 'dark', 'blue', 'pink'].indexOf(t) === -1) {
     t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
   document.documentElement.setAttribute('data-theme', t);
@@ -43,7 +43,7 @@
   </section>
 
   <section class="band">
-    <div class="wrap card-grid">
+    <div class="wrap card-grid testimonial-grid">
       <blockquote class="card">
         <p>&ldquo;I highly recommend Ruth! In just six months, her expert support has brought huge improvements. She makes sessions fun, builds our daughter&rsquo;s confidence, and provides a wealth of invaluable experience.&rdquo;</p>
       </blockquote>
