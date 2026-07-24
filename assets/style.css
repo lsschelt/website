@@ -11,6 +11,7 @@
   --color-ink-soft: #5B564D;  /* secondary text */
   --color-primary: #3C6E71;   /* calm teal - links, buttons */
   --color-primary-dark: #274C4E;
+  --color-heading: #274C4E;   /* headings/active text - separate from primary-dark's background role */
   --color-accent: #C98A3E;    /* warm ochre - the "highlighter" signature */
   --color-border: #DDD3BE;
   --color-surface: #FFFFFF;
@@ -28,6 +29,18 @@
   --header-height: 120px;
 }
 
+:root[data-theme="dark"] {
+  --color-bg: #1D1A16;
+  --color-bg-band: #262B22;
+  --color-ink: #F2EEE6;
+  --color-ink-soft: #BFB9AC;
+  --color-primary: #6FB3B6;
+  --color-accent: #E3A85C;
+  --color-border: #3A362E;
+  --color-surface: #262320;
+  --color-heading: #8FD3D6;
+}
+
 * { box-sizing: border-box; }
 
 html {
@@ -43,6 +56,7 @@ body {
   font-family: var(--font-body);
   font-size: 1.15rem;
   line-height: 1.65;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 img { max-width: 100%; display: block; }
@@ -52,7 +66,7 @@ p, li { text-align: left; max-width: 68ch; }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  color: var(--color-primary-dark);
+  color: var(--color-heading);
   line-height: 1.25;
   font-weight: 600;
 }
@@ -73,7 +87,7 @@ a {
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
-a:hover { color: var(--color-primary-dark); }
+a:hover { color: var(--color-heading); }
 
 /* Clear, chunky focus ring for keyboard users */
 a:focus-visible,
@@ -126,8 +140,8 @@ button:focus-visible {
 .button:hover { background: var(--color-primary-dark); color: #fff; }
 .button--ghost {
   background: transparent;
-  color: var(--color-primary-dark);
-  border: 2px solid var(--color-primary-dark);
+  color: var(--color-heading);
+  border: 2px solid var(--color-heading);
 }
 .button--ghost:hover { background: var(--color-primary-dark); color: #fff; }
 .band--dark .button--ghost { color: #fff; border-color: #fff; }
@@ -179,7 +193,7 @@ button:focus-visible {
   justify-content: center;
   border-radius: 50%;
   background: var(--color-bg-band);
-  color: var(--color-primary-dark);
+  color: var(--color-heading);
   font-size: 1.2rem;
   line-height: 1;
 }
@@ -227,7 +241,7 @@ button:focus-visible {
   font-family: var(--font-display);
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--color-primary-dark);
+  color: var(--color-heading);
   background: var(--color-bg-band);
   border: 1px solid var(--color-border);
   border-radius: 999px;
@@ -328,7 +342,7 @@ button:focus-visible {
 }
 .nav-link:hover { background: var(--color-bg-band); }
 .nav-link.is-active {
-  color: var(--color-primary-dark);
+  color: var(--color-heading);
   border-left-color: var(--color-accent);
   background: var(--color-bg-band);
 }
@@ -339,13 +353,15 @@ button:focus-visible {
   margin: 0.5rem 0.6rem;
 }
 
-.text-size {
+.text-size,
+.theme-toggle {
   display: flex;
   gap: 0.4rem;
   align-items: center;
   padding: 0.4em 0.6em;
 }
-.text-size button {
+.text-size button,
+.theme-toggle button {
   font-family: var(--font-body);
   background: var(--color-bg-band);
   border: 1px solid var(--color-border);
@@ -355,8 +371,15 @@ button:focus-visible {
   font-size: 0.95rem;
   min-height: 40px;
 }
-.text-size button:hover { background: var(--color-accent); color: #fff; }
-.text-size__label { font-size: 0.85rem; color: var(--color-ink-soft); }
+.text-size button:hover,
+.theme-toggle button:hover { background: var(--color-accent); color: #fff; }
+.theme-toggle button[aria-pressed="true"] {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+.text-size__label,
+.theme-toggle__label { font-size: 0.85rem; color: var(--color-ink-soft); }
 
 /* Backdrop so a tap outside the panel closes it, and the page content
    is visually separated from the open menu */

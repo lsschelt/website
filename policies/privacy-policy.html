@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+(function () {
+  var t = localStorage.getItem('theme');
+  if (t !== 'light' && t !== 'dark') {
+    t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy | Empowering Learners</title>
 <meta name="description" content="Privacy notice (UK GDPR) for Empowering Learners - Ruth Paterson, explaining how personal information is collected, used, and protected.">

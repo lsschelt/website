@@ -58,6 +58,12 @@
             '<button type="button" data-scale="1" aria-label="Default text size">A</button>' +
             '<button type="button" data-scale="1.25" aria-label="Larger text">A+</button>' +
           '</div>' +
+          '<hr class="nav-panel__divider">' +
+          '<div class="theme-toggle" role="group" aria-label="Colour theme">' +
+            '<span class="theme-toggle__label">Theme</span>' +
+            '<button type="button" data-theme-choice="light" aria-label="Light theme">Light</button>' +
+            '<button type="button" data-theme-choice="dark" aria-label="Dark theme">Dark</button>' +
+          '</div>' +
         '</nav>' +
       '</header>'
     );
@@ -84,6 +90,46 @@
           new Date().getFullYear() + ' Empowering Learners - Ruth Paterson</p>' +
       '</footer>'
     );
+  }
+
+  var THEME_KEY = "theme";
+
+  function getPreferredTheme() {
+    var stored = localStorage.getItem(THEME_KEY);
+    if (stored === "light" || stored === "dark") { return stored; }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+  }
+
+  // Applied immediately (not just on DOMContentLoaded) so the correct
+  // theme is set as early as possible even if a page is ever missing
+  // the no-flash bootstrap script in its <head>.
+  applyTheme(getPreferredTheme());
+
+  function initTheme(root) {
+    var buttons = root.querySelectorAll(".theme-toggle button");
+
+    function refreshPressed() {
+      var current = document.documentElement.getAttribute("data-theme");
+      buttons.forEach(function (btn) {
+        var isActive = btn.getAttribute("data-theme-choice") === current;
+        btn.setAttribute("aria-pressed", isActive ? "true" : "false");
+      });
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var choice = btn.getAttribute("data-theme-choice");
+        localStorage.setItem(THEME_KEY, choice);
+        applyTheme(choice);
+        refreshPressed();
+      });
+    });
+
+    refreshPressed();
   }
 
   function initTextSize(root) {
@@ -142,6 +188,7 @@
     footerHost.outerHTML = buildFooter(basePath);
 
     initTextSize(document.getElementById("nav-panel"));
+    initTheme(document.getElementById("nav-panel"));
     initMenu();
   }
 
