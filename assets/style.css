@@ -179,6 +179,12 @@ button:focus-visible {
   margin-top: 1.5rem;
 }
 
+/* Expandable boxes share a grid row's height, so an open one makes
+   closed neighbours stretch too. One per row avoids that. */
+.card-grid--single {
+  grid-template-columns: 1fr;
+}
+
 .testimonial-grid {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
