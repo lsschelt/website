@@ -436,6 +436,15 @@ button:focus-visible {
   height: auto;
   margin: 0 auto;
 }
+
+.about-photo {
+  width: 280px;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  margin-top: 1.5rem;
+}
 .hero__lede {
   font-size: 1.25rem;
   color: var(--color-ink-soft);
