@@ -231,14 +231,17 @@ button:focus-visible {
 
 .credential-logos {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 1.5rem;
+  justify-content: center;
+  gap: 0.75rem;
   margin-top: 1rem;
 }
 .credential-badge {
+  flex: 1 1 0;
+  min-width: 0;
   width: auto;
-  max-width: 200px;
+  max-width: 130px;
   height: auto;
 }
 
