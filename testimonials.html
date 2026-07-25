@@ -5,8 +5,8 @@
 <script>
 (function () {
   var t = localStorage.getItem('theme');
-  if (['light', 'dark', 'blue', 'pink'].indexOf(t) === -1) {
-    t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  if (['green', 'blue', 'pink', 'yellow'].indexOf(t) === -1) {
+    t = 'green';
   }
   document.documentElement.setAttribute('data-theme', t);
 })();
@@ -61,7 +61,6 @@
 
 </main>
 
-<div id="site-footer" data-base=""></div>
 <script src="assets/site.js"></script>
 </body>
 </html>

@@ -1,9 +1,9 @@
 /* =========================================================
    Shared site chrome.
    Each page includes this file plus an empty
-   <div id="site-header"></div> and <div id="site-footer"></div>.
-   The header and footer markup therefore only exists once,
-   here, instead of being copy-pasted into every page.
+   <div id="site-header"></div>.
+   The header markup therefore only exists once, here, instead
+   of being copy-pasted into every page.
    ========================================================= */
 
 (function () {
@@ -42,11 +42,14 @@
             '<img class="brand__logo" src="' + basePath + 'assets/logo-small.png" ' +
               'alt="Empowering Learners - Ruth Paterson" width="320" height="320">' +
           '</a>' +
-          '<button type="button" class="nav-icon-btn" id="nav-toggle-btn" ' +
-            'aria-haspopup="true" aria-expanded="false" aria-controls="nav-panel">' +
-            MENU_ICON +
-            '<span class="nav-icon-btn__label">Menu</span>' +
-          '</button>' +
+          '<div class="site-header__actions">' +
+            '<a class="button button--ghost header-contact-btn" href="' + basePath + 'contact.html">Contact Us</a>' +
+            '<button type="button" class="nav-icon-btn" id="nav-toggle-btn" ' +
+              'aria-haspopup="true" aria-expanded="false" aria-controls="nav-panel">' +
+              MENU_ICON +
+              '<span class="nav-icon-btn__label">Menu</span>' +
+            '</button>' +
+          '</div>' +
         '</div>' +
         '<div class="nav-backdrop" id="nav-backdrop"></div>' +
         '<nav class="nav-panel" id="nav-panel" aria-label="Main">' +
@@ -61,46 +64,23 @@
           '<hr class="nav-panel__divider">' +
           '<div class="theme-toggle" role="group" aria-label="Colour theme">' +
             '<span class="theme-toggle__label">Theme</span>' +
-            '<button type="button" data-theme-choice="light" aria-label="Light theme">Light</button>' +
-            '<button type="button" data-theme-choice="dark" aria-label="Dark theme">Dark</button>' +
+            '<button type="button" data-theme-choice="green" aria-label="Green theme">Green</button>' +
             '<button type="button" data-theme-choice="blue" aria-label="Blue tint theme">Blue</button>' +
             '<button type="button" data-theme-choice="pink" aria-label="Pink tint theme">Pink</button>' +
+            '<button type="button" data-theme-choice="yellow" aria-label="Yellow tint theme">Yellow</button>' +
           '</div>' +
         '</nav>' +
       '</header>'
     );
   }
 
-  function buildFooter(basePath) {
-    return (
-      '<footer class="site-footer">' +
-        '<div class="site-footer__grid">' +
-          '<div>' +
-            '<h2>Empowering Learners</h2>' +
-            '<p><a href="mailto:info@empoweringlearners.co.uk">info@empoweringlearners.co.uk</a></p>' +
-          '</div>' +
-          '<div>' +
-            '<h2>Quick links</h2>' +
-            '<ul>' +
-              NAV_ITEMS.map(function (item) {
-                return '<li><a href="' + basePath + item.href + '">' + item.label + "</a></li>";
-              }).join("") +
-            '</ul>' +
-          '</div>' +
-        '</div>' +
-        '<p class="site-footer__bottom">&copy; ' +
-          new Date().getFullYear() + ' Empowering Learners - Ruth Paterson</p>' +
-      '</footer>'
-    );
-  }
-
   var THEME_KEY = "theme";
-  var THEMES = ["light", "dark", "blue", "pink"];
+  var THEMES = ["green", "blue", "pink", "yellow"];
 
   function getPreferredTheme() {
     var stored = localStorage.getItem(THEME_KEY);
     if (THEMES.indexOf(stored) !== -1) { return stored; }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return "green";
   }
 
   function applyTheme(theme) {
@@ -181,14 +161,12 @@
 
   function render() {
     var headerHost = document.getElementById("site-header");
-    var footerHost = document.getElementById("site-footer");
-    if (!headerHost || !footerHost) { return; }
+    if (!headerHost) { return; }
 
     var activeId = headerHost.getAttribute("data-active") || "home";
     var basePath = headerHost.getAttribute("data-base") || "";
 
     headerHost.outerHTML = buildHeader(activeId, basePath);
-    footerHost.outerHTML = buildFooter(basePath);
 
     initTextSize(document.getElementById("nav-panel"));
     initTheme(document.getElementById("nav-panel"));
