@@ -115,6 +115,19 @@
     refreshPressed();
   }
 
+  function initReadMore(root) {
+    var buttons = root.querySelectorAll(".bio-toggle");
+    buttons.forEach(function (btn) {
+      var text = btn.previousElementSibling;
+      if (!text || !text.classList.contains("bio-text")) { return; }
+      btn.addEventListener("click", function () {
+        var expanded = text.classList.toggle("is-expanded");
+        btn.setAttribute("aria-expanded", expanded ? "true" : "false");
+        btn.textContent = expanded ? "Read less" : "Read more";
+      });
+    });
+  }
+
   function initTextSize(root) {
     var buttons = root.querySelectorAll(".text-size button");
     buttons.forEach(function (btn) {
@@ -171,6 +184,7 @@
     initTextSize(document.getElementById("nav-panel"));
     initTheme(document.getElementById("nav-panel"));
     initMenu();
+    initReadMore(document);
   }
 
   document.addEventListener("DOMContentLoaded", render);

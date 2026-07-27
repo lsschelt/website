@@ -453,6 +453,30 @@ button:focus-visible {
   box-shadow: var(--shadow-card);
   margin-top: 1.5rem;
 }
+
+.bio-text {
+  max-height: 8rem;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.bio-text.is-expanded {
+  max-height: none;
+}
+.bio-toggle {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-heading);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.bio-toggle:hover { color: var(--color-primary); }
 .hero__lede {
   font-size: 1.25rem;
   color: var(--color-ink-soft);
