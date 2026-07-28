@@ -115,6 +115,32 @@
     refreshPressed();
   }
 
+  function initCarousels(root) {
+    var carousels = root.querySelectorAll(".testimonial-carousel");
+    carousels.forEach(function (carousel) {
+      var track = carousel.querySelector(".testimonial-grid");
+      var prevBtn = carousel.querySelector(".carousel-arrow--prev");
+      var nextBtn = carousel.querySelector(".carousel-arrow--next");
+      if (!track || !prevBtn || !nextBtn) { return; }
+
+      function updateArrows() {
+        var maxScroll = track.scrollWidth - track.clientWidth;
+        prevBtn.disabled = track.scrollLeft <= 1;
+        nextBtn.disabled = track.scrollLeft >= maxScroll - 1;
+      }
+
+      prevBtn.addEventListener("click", function () {
+        track.scrollBy({ left: -track.clientWidth * 0.9, behavior: "smooth" });
+      });
+      nextBtn.addEventListener("click", function () {
+        track.scrollBy({ left: track.clientWidth * 0.9, behavior: "smooth" });
+      });
+      track.addEventListener("scroll", updateArrows);
+      window.addEventListener("resize", updateArrows);
+      updateArrows();
+    });
+  }
+
   function initReadMore(root) {
     var buttons = root.querySelectorAll(".bio-toggle");
     buttons.forEach(function (btn) {
@@ -185,6 +211,7 @@
     initTheme(document.getElementById("nav-panel"));
     initMenu();
     initReadMore(document);
+    initCarousels(document);
   }
 
   document.addEventListener("DOMContentLoaded", render);
